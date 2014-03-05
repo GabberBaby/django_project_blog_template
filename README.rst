@@ -19,7 +19,7 @@ Create a Django project::
 
     mkdir my-website.com
     cd my-website.com
-    django-admin.py startproject mywebsite . -e py,rst,example,gitignore --template=https://github.com/GabberBaby/django_project_template/archive/empty_project.zip
+    django-admin.py startproject mywebsite . -e py,rst,example,gitignore --template=https://github.com/GabberBaby/django_project_blog_template/archive/empty.zip
 
 Installation
 ------------
