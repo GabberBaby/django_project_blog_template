@@ -1,7 +1,7 @@
 # Install with: `pip install -r requirements.txt`
 
 Django >= 1.5.5, < 1.6
-Pillow==2.0.0
+Pillow==2.1.0
 #for MySQL: MySQL-python==1.2.5
 MySQL-python==1.2.5
 #for PostgreSQL: psycopg2==2.5.2
@@ -30,5 +30,5 @@ django-tinymce==1.5.2
 
 #blog
 django-blog-zinnia==0.13
-django-photologue==2.6
-cmsplugin-phlog==0.3.1
+django-photologue==2.7
+#cmsplugin-phlog==0.3.1
