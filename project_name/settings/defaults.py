@@ -31,7 +31,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'django_test',                      # Or path to database file if using sqlite3.
+        'NAME': 'django_blog',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
         'USER': 'root',
         'PASSWORD': '',
@@ -115,8 +115,8 @@ INSTALLED_APPS = (
     # enable the admin
     'admin_tools',
     'admin_tools.theming',
-    'admin_tools.menu',
-    'admin_tools.dashboard',
+    #'admin_tools.menu',
+    #'admin_tools.dashboard',
 
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -153,7 +153,7 @@ INSTALLED_APPS = (
     'mptt',
     'zinnia',
     'photologue',
-    #'cmsplugin_phlog',
+    'cmsplugin_phlog',
 
 
 )
@@ -188,6 +188,8 @@ LOGGING = {
 CMS_TEMPLATES = (
     ('index.html', 'index'),
 )
+
+CMS_MEDIA_URL = '/static/cms/'
 
 CMS_SEO_FIELDS = True
 SEO_FOR_MODELS = []
