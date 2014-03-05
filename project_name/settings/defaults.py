@@ -3,6 +3,11 @@
 #
 #author: 'gabber'
 
+#!/usr/bin/env python
+# -*- encoding: utf-8 -*-
+#
+#author: 'gabber'
+
 # Django settings for django_cms_template project.
 from os import path
 gettext = lambda s: s
@@ -66,14 +71,31 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.contrib.messages.context_processors.messages',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.request',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'cms.context_processors.media',
+    'sekizai.context_processors.sekizai',
+    'zinnia.context_processors.version',
+)
+
+
 MIDDLEWARE_CLASSES = (
-    'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    # Uncomment the next line for simple clickjacking protection:
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.doc.XViewMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'cms.middleware.page.CurrentPageMiddleware',
+    'cms.middleware.user.CurrentUserMiddleware',
+    'cms.middleware.toolbar.ToolbarMiddleware',
+    'cms.middleware.language.LanguageCookieMiddleware',
 )
 
 ROOT_URLCONF = 'project_name.urls'
@@ -82,7 +104,20 @@ WSGI_APPLICATION = 'project_name.wsgi.application'
 
 TEMPLATE_DIRS = TEMPLATE_PATH
 
+LANGUAGES = [
+    ('en', 'English'),
+    ('ru', 'Russian')
+]
+
 INSTALLED_APPS = (
+    'fluent_dashboard',
+
+    # enable the admin
+    'admin_tools',
+    'admin_tools.theming',
+    'admin_tools.menu',
+    'admin_tools.dashboard',
+
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -91,6 +126,35 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.admindocs',
+
+    #cms
+    'cms',
+    'mptt',
+    'menus',
+    'south',
+    'sekizai',
+
+    'cms.plugins.file',
+    'cms.plugins.flash',
+    'cms.plugins.googlemap',
+    'cms.plugins.link',
+    'cms.plugins.picture',
+    'cms.plugins.teaser',
+    'cms.plugins.text',
+    'cms.plugins.video',
+    'cms.plugins.twitter',
+    'reversion',
+    'tagging',
+
+    'tinymce',
+
+    #blog
+    'mptt',
+    'zinnia',
+    'photologue',
+    #'cmsplugin_phlog',
+
+    'seo',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
@@ -118,6 +182,14 @@ LOGGING = {
         },
     }
 }
+
+
+CMS_TEMPLATES = (
+    ('index.html', 'index'),
+)
+
+CMS_SEO_FIELDS = True
+SEO_FOR_MODELS = []
 
 ADMIN_TOOLS_INDEX_DASHBOARD = 'fluent_dashboard.dashboard.FluentIndexDashboard'
 ADMIN_TOOLS_APP_INDEX_DASHBOARD = 'fluent_dashboard.dashboard.FluentAppIndexDashboard'
