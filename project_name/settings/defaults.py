@@ -126,6 +126,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.admindocs',
+    'django.contrib.comments',
 
     #cms
     'cms',
@@ -145,7 +146,7 @@ INSTALLED_APPS = (
     'cms.plugins.twitter',
     'reversion',
     'tagging',
-
+    'seo',
     'tinymce',
 
     #blog
@@ -154,7 +155,7 @@ INSTALLED_APPS = (
     'photologue',
     #'cmsplugin_phlog',
 
-    'seo',
+
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
